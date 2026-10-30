@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PayGuard Agent — Policy-Guarded AI Purchasing</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">PayPal AI Hackathon · Sandbox only</p>
+        <h1>PayGuard Agent</h1>
+        <p class="tagline">An AI purchasing agent with a policy seatbelt: it can shop, but it cannot spend outside the rules.</p>
+      </div>
+      <div class="mode-card">
+        <span class="label">Payment adapter</span>
+        <strong id="adapter-mode">Loading…</strong>
+        <p id="adapter-note"></p>
+      </div>
+    </header>
+
+    <main>
+      <section class="stats" aria-label="Spending summary">
+        <article><span>Committed today</span><strong id="metric-today">$0.00</strong></article>
+        <article><span>Committed this month</span><strong id="metric-month">$0.00</strong></article>
+        <article><span>Captured</span><strong id="metric-captured">$0.00</strong></article>
+        <article><span>Needs approval</span><strong id="metric-approval">0</strong></article>
+      </section>
+
+      <div class="layout">
+        <section class="panel agent-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Agent mission</p>
+              <h2>Ask the agent to buy something</h2>
+            </div>
+            <span class="pill">Local planner · account-free</span>
+          </div>
+          <form id="mission-form">
+            <label for="mission-input">Mission</label>
+            <textarea id="mission-input" rows="3">Buy 1 USB-C dock for the new team laptop under $80</textarea>
+            <div class="sample-row">
+              <button type="button" data-sample="Buy 2 packs of recycled notebooks for the team">Notebooks</button>
+              <button type="button" data-sample="Buy 2 bags of coffee beans for the office">Coffee ×2</button>
+              <button type="button" data-sample="Buy a standing desk converter">Desk</button>
+              <button type="button" data-sample="Buy a $100 gift card from Unlisted Deals">Gift card</button>
+            </div>
+            <button class="primary" type="submit">Create policy-checked proposal</button>
+          </form>
+          <p id="message" role="status"></p>
+
+          <div class="section-heading compact">
+            <h3>Product catalog</h3>
+            <span>Channel3-shaped normalized records</span>
+          </div>
+          <div id="catalog" class="catalog"></div>
+        </section>
+
+        <section class="panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Human steering</p>
+              <h2>Policy controls</h2>
+            </div>
+            <span class="pill safe">Hard limits enforced twice</span>
+          </div>
+          <form id="policy-form" class="policy-form">
+            <label>Auto-approve up to <input id="policy-auto" type="number" min="0" step="1" /></label>
+            <label>Per-order cap <input id="policy-order" type="number" min="0" step="1" /></label>
+            <label>Daily cap <input id="policy-daily" type="number" min="0" step="1" /></label>
+            <label>Monthly budget <input id="policy-monthly" type="number" min="0" step="1" /></label>
+            <label class="wide">Allowed merchants <input id="policy-merchants" type="text" /></label>
+            <label class="wide">Allowed categories <input id="policy-categories" type="text" /></label>
+            <button type="submit">Update policy & re-check pending</button>
+          </form>
+          <p class="hint">Dollar amounts are converted to integer cents before the policy engine evaluates them.</p>
+
+          <div class="section-heading compact">
+            <h3>Upcoming timeline</h3>
+            <span>Bryntum-ready data model</span>
+          </div>
+          <div id="timeline" class="timeline"></div>
+        </section>
+      </div>
+
+      <section class="panel proposals-panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Proposal queue</p>
+            <h2>Agent decisions you can inspect</h2>
+          </div>
+          <span class="pill">Every action leaves an audit trail</span>
+        </div>
+        <div id="proposals" class="proposals"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Ledger</p>
+            <h2>Payment and policy record</h2>
+          </div>
+          <span class="pill">AG Grid-ready rows</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Proposal</th><th>Item</th><th>Merchant</th><th>Status</th><th>Amount</th><th>Order</th><th>Capture</th></tr></thead>
+            <tbody id="ledger"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Audit log</p>
+            <h2>What happened, in order</h2>
+          </div>
+        </div>
+        <ol id="audit" class="audit"></ol>
+      </section>
+    </main>
+
+    <footer>
+      <p>Demo safety: mock mode makes no PayPal network calls. Sandbox mode is server-side only and this code refuses live PayPal mode.</p>
+    </footer>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
