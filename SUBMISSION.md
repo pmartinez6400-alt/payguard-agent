@@ -17,13 +17,13 @@ Built and locally testable:
 - PayPal Orders v2-shaped mock adapter;
 - PayPal Sandbox adapter implementation with stubbed-HTTP tests;
 - MIT license;
+- public repository: https://github.com/pmartinez6400-alt/payguard-agent
 - README, requirements analysis, account-boundary analysis, sponsor-lane
   analysis, and demo shot list.
 
 Not yet done:
 
 - real PayPal Sandbox order/approval/capture rehearsal with credentials;
-- public repository publication;
 - sponsor-tool integration (none should be claimed yet);
 - final AI-provider decision and integration;
 - hosted demo URL (optional if repository run instructions remain complete);
