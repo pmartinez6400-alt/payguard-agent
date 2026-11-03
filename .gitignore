@@ -6,3 +6,7 @@ node_modules/
 *.log
 coverage/
 dist/
+
+# Local credential handover tooling — never publish
+handover-server.js
+handover-server-net.js
