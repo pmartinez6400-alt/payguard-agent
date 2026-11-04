@@ -23,7 +23,16 @@ Built and locally testable:
 
 Not yet done:
 
-- real PayPal Sandbox order/approval/capture rehearsal with credentials;
+- real PayPal Sandbox rehearsal: PARTIAL — completed 2026-11-03 with the
+  account owner's sandbox credentials: OAuth token obtained from
+  api-m.sandbox.paypal.com and a real order created through this app's own
+  Sandbox adapter (order 1WR56018E87118428, status CREATED, approval URL
+  returned) and read back by ID (status CREATED, intent CAPTURE). One
+  environment note: the build VM's egress proxy drops Node-undici POSTs to
+  PayPal, so the live run used a curl transport under the adapter — all
+  request construction, auth, and response parsing were the app's own code.
+  Still not done: buyer approval + capture rehearsal with the sandbox
+  buyer account;
 - sponsor-tool integration (none should be claimed yet);
 - final AI-provider decision and integration;
 - hosted demo URL (optional if repository run instructions remain complete);
@@ -64,10 +73,12 @@ These steps require Peter's accounts or identity and must not be improvised:
 ### 1. Verify the real PayPal Sandbox flow
 
 - Set `PAYPAL_MODE=sandbox` and the sandbox credentials in a local `.env`.
+  DONE 2026-11-03 (local `.env`, mode sandbox, never committed).
 - Confirm `/api/health` reports sandbox mode as configured without exposing
   values.
 - Create a small proposal and execute it.
-- Confirm a real sandbox order ID is returned.
+- Confirm a real sandbox order ID is returned. DONE 2026-11-03:
+  order 1WR56018E87118428, status CREATED (see "Not yet done" above).
 - Open the PayPal approval URL and approve with the sandbox buyer account.
 - Return to the app and capture the order.
 - Record the order ID, capture ID, statuses, and screenshots for the demo.
